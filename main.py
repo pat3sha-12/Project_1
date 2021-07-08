@@ -1,4 +1,4 @@
-# code for main.py
+
 
     def clear(self):
         self.current_expression = ""
@@ -64,5 +64,7 @@
         self.current_expression = " "
         self.update_total_label()
         self.update_label()
-   
-
+        
+        
+        
+ # run python main.py
