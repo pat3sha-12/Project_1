@@ -146,7 +146,16 @@ class Calculator:
         frame = tk.Frame(self.window)
         frame.pack(expand=True, fill="both")
         return frame
-  
+    
+    def update_total_label(self):
+        expression = self.total_expression
+        for operator, symbol in self.operations.items():
+            expression = expression.replace(operator,f' {symbol} ') 
+        self.total_label.config(test=expression)
+        
+    def update_label(self):
+        self.label.config(text=self.current_expression[: 11])
+        
     def run(self):
         self.window.mainloop()
 
