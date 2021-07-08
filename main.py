@@ -63,6 +63,3 @@
         self.update_total_label()
         self.update_label()
    
-
-
-
