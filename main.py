@@ -49,7 +49,14 @@ class Calculator:
         
         for key in self.operations:
             self.window.bind(key, lambda event, operator=key: self.append_operator(operator))
-
+            
+    def create_special_buttons(self):
+        self.create_clear_button()
+        self.create_equals_button()
+        self.create_square_button()
+        self.create_sqrt_button()
+        self.create_backspace_button()
+        
     def create_display_labels(self):
         total_label = tk.Label(self.display_frame, text=self.total_expression, anchor=tk.E, bg=LIGHT_GRAY, fg=LABEL_COLOR, padx=24,font = SMALL_FONT_STYLE)
         total_label.pack(expand=True, fill='both')
