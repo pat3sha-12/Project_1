@@ -40,83 +40,6 @@ class Calculator:
             self.buttons_frame.rowconfigure(x, weight = 1)
             self.buttons_frame.columnconfigure(x, weight = 1)
         
-        # Buttons for operations
-        operators = self.operations.keys()
-        operator =list(operators)
-
-        symbols = self.operations.values()
-        symbol = list(symbols)
-
-        self.button_divide = tk.Button(self.buttons_frame, text=symbol[0], bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command=lambda x=operator[0]: self.append_operator(x))
-        self.button_divide.grid(row =1, column = 4, sticky=tk.NSEW)
-
-        self.button_multiply = tk.Button(self.buttons_frame, text=symbol[1], bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command=lambda x=operator[1]: self.append_operator(x))
-        self.button_multiply.grid(row =2, column = 4, sticky=tk.NSEW)
-
-        self.button_subtract = tk.Button(self.buttons_frame, text=symbol[2], bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command=lambda x=operator[2]: self.append_operator(x))
-        self.button_subtract.grid(row =3, column = 4, sticky=tk.NSEW)
-
-        self.button_add = tk.Button(self.buttons_frame, text=symbol[3], bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command=lambda x=operator[3]: self.append_operator(x))
-        self.button_add.grid(row =4, column = 4, sticky=tk.NSEW)
-
-        # Buttons for digits
-        digits = self.digits.keys()
-        digit = list(digits)
-
-        self.button_7 = tk.Button(self.buttons_frame, text=str(7), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[0]: self.add_to_expression(x))
-        self.button_7.grid(row=1, column=1, sticky=tk.NSEW)
-
-        self.button_8 = tk.Button(self.buttons_frame, text=str(8), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[1]: self.add_to_expression(x))
-        self.button_8.grid(row=1, column=2, sticky=tk.NSEW)
-
-        self.button_9 = tk.Button(self.buttons_frame, text=str(9), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[2]: self.add_to_expression(x))
-        self.button_9.grid(row=1, column=3, sticky=tk.NSEW)
-
-        self.button_4 = tk.Button(self.buttons_frame, text=str(4), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[3]: self.add_to_expression(x))
-        self.button_4.grid(row=2, column=1, sticky=tk.NSEW)
-
-        self.button_5 = tk.Button(self.buttons_frame, text=str(5), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[4]: self.add_to_expression(x))
-        self.button_5.grid(row=2, column=2, sticky=tk.NSEW)
-
-        self.button_6 = tk.Button(self.buttons_frame, text=str(6), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[5]: self.add_to_expression(x))
-        self.button_6.grid(row=2, column=3, sticky=tk.NSEW)
-
-        self.button_1 = tk.Button(self.buttons_frame, text=str(1), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[6]: self.add_to_expression(x))
-        self.button_1.grid(row=3, column=1, sticky=tk.NSEW)
-
-        self.button_2 = tk.Button(self.buttons_frame, text=str(2), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[7]: self.add_to_expression(x))
-        self.button_2.grid(row=3, column=2, sticky=tk.NSEW)
-
-        self.button_3 = tk.Button(self.buttons_frame, text=str(3), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[8]: self.add_to_expression(x))
-        self.button_3.grid(row=3, column=3, sticky=tk.NSEW)
-
-        self.button_0 = tk.Button(self.buttons_frame, text=str(0), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[9]: self.add_to_expression(x))
-        self.button_0.grid(row=4, column=2, sticky=tk.NSEW)
-
-        self.button_dp = tk.Button(self.buttons_frame, text=str('.'), bg = WHITE, fg=LABEL_COLOR, font=DIGITS_FONT_STYLE, borderwidth = 0, command=lambda x=digit[10]: self.add_to_expression(x))
-        self.button_dp.grid(row=4, column=1, sticky=tk.NSEW)
-
-        # Button for Clear
-        self.button_Clear = tk.Button(self.buttons_frame, text="C", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.clear)
-        self.button_Clear.grid(row =0, column = 1, sticky=tk.NSEW)
-
-        # Button for backspace
-        self.button_backspace = tk.Button(self.buttons_frame, text="\u232b", bg=OFF_WHITE, fg=LABEL_COLOR, font= FONT_STYLE, borderwidth = 0, command = self.backspace)
-        self.button_backspace.grid(row =0, column = 4, sticky=tk.NSEW)
-
-        # Button for square
-        self.button_square = tk.Button(self.buttons_frame, text="x\u00b2", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.square)
-        self.button_square.grid(row =0, column = 2, sticky=tk.NSEW)
-
-        # Button for squareroot
-        self.button_sqrt = tk.Button(self.buttons_frame, text="\u221ax", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.sqrt)
-        self.button_sqrt.grid(row =0, column = 3, sticky=tk.NSEW)
-
-        # Button for equals
-        self.button_equals = tk.Button(self.buttons_frame, text="=", bg=LIGHT_BLUE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.evaluate)
-        self.button_equals.grid(row =4, column = 3, columnspan =1, sticky=tk.NSEW)
-
-
         self.bind_keys()
     
     def bind_keys(self):
@@ -155,6 +78,8 @@ class Calculator:
         
     def update_label(self):
         self.label.config(text=self.current_expression[: 11])
+        
+        
         
     def run(self):
         self.window.mainloop()
