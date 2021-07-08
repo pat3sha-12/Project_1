@@ -1,3 +1,4 @@
+   
     def clear(self):
         self.current_expression = ""
         self.total_expression = ""
