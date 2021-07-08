@@ -62,16 +62,4 @@
         self.current_expression = " "
         self.update_total_label()
         self.update_label()
-    
-    def update_total_label(self):
-        expression = self.total_expression
-        for operator, symbol in self.operations.items():
-            expression = expression.replace(operator, f' {symbol} ')
-        self.total_label.config(text=expression)
-        
-    def update_label(self):
-        self.label.config(text=self.current_expression[: 11])
-
-
-
-
+   
