@@ -1,3 +1,4 @@
+    
     def percentage(self):
         try:
             self.current_expression = str(eval(f"{self.current_expression}/100"))
