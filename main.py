@@ -224,7 +224,7 @@ class Calculator:
         
         
         
-     def run(self):
+    def run(self):
         self.window.mainloop()
         
 
