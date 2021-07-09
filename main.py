@@ -27,10 +27,10 @@ class Calculator:
         self.total_label, self.label = self.create_display_labels()
 
         self.digits = {
-            7: (1,1), 8: (1,2), 9: (1,3),
-            4: (2,1), 5: (2,2), 6: (2,3),
-            1: (3,1), 2: (3,2), 3: (3,3),
-            0: (4,2), '.':(4,1)
+            7: (2,1), 8: (2,2), 9: (2,3),
+            4: (3,1), 5: (3,2), 6: (3,3),
+            1: (4,1), 2: (4,2), 3: (4,3),
+            0: (5,2), '.':(5,1)
         }
         self.operations = {"/": "\u00F7", "*": "\u00D7", "-": "-", "+": "+"}
         self.buttons_frame = self.create_buttons_frame()
@@ -122,7 +122,7 @@ class Calculator:
 
     def create_equals_button(self):
         button = tk.Button(self.buttons_frame, text="=", bg=LIGHT_BLUE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.evaluate)
-        button.grid(row =4, column = 3, columnspan =1, sticky=tk.NSEW)
+        button.grid(row =4, column = 3, columnspan =2, sticky=tk.NSEW)
 
     def create_buttons_frame(self):
         frame = tk.Frame(self.window)
