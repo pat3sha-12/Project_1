@@ -3,6 +3,10 @@ A love for cute duck pictures is one of the things this group have in common. Th
 
 Together as a team, they will work hard to deliver their expected outcome: the Calculator. 
 
+![the calculator](https://user-images.githubusercontent.com/84178289/125024708-e6bf5a00-e0b3-11eb-9467-187ac779870e.png)
+
+
+
 
 
 
