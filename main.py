@@ -28,7 +28,7 @@
             output = t[len(t.rstrip('().0123456789')):]
             operator = ["/", "*", "-", "+"]
             try:
-                if t[-1].isdigit() or t[-1] == ")" or t[-1] == operator:
+                if t[-1].isdigit() or t[-1] == ")" or t[-1] in operator:
                     self.total_expression = self.total_expression.rstrip('().0123456789')
                     self.current_expression = output
 
