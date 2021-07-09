@@ -123,7 +123,7 @@ class Calculator:
 
     def create_equals_button(self):
         button = tk.Button(self.buttons_frame, text="=", bg=LIGHT_BLUE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.evaluate)
-        button.grid(row =4, column = 3, columnspan =2, sticky=tk.NSEW)
+        button.grid(row =5, column = 3, columnspan =2, sticky=tk.NSEW)
 
     def create_buttons_frame(self):
         frame = tk.Frame(self.window)
