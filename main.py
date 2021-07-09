@@ -89,4 +89,4 @@
         
     def update_label(self):
         self.label.config(text=self.current_expression[: 11])
-
+        
