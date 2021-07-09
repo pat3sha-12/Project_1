@@ -1,5 +1,5 @@
 import unittest
-from main import Calculator
+from Calculator import Calculator
 
 
 class TestCalculator(unittest.TestCase):
@@ -47,7 +47,7 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.c.current_expression, "2", msg=None) 
 
         self.c.clear()
-
+    
     def test_square(self):
         self.c.add_to_expression("2")
         self.c.square()
@@ -62,9 +62,7 @@ class TestCalculator(unittest.TestCase):
 
         self.assertEqual(self.c.current_expression, "2.0", msg=None)
 
-        self.c.backspace()
-        self.c.backspace()
-        self.c.backspace()
+        self.c.clear()
 
     def test_subtract(self):
         self.c.add_to_expression("5")
@@ -102,7 +100,52 @@ class TestCalculator(unittest.TestCase):
         self.c.add_to_expression("1")
         self.c.evaluate()
 
-        self.assertEqual(self.c.current_expression, "17", msg=None)
+        self.c.clear()
+
+    def test_multiple_operations2(self):
+        self.c.add_to_expression("8")
+        self.c.add_to_expression("8")
+        self.c.append_operator("+")
+        self.c.add_to_expression("7")
+        self.c.add_to_expression("7")
+        self.c.append_operator("-")
+        self.c.add_to_expression("1")
+        self.c.add_to_expression("7")
+        self.c.append_operator("/")
+        self.c.add_to_expression("1")
+        self.c.add_to_expression("1")
+        self.c.append_operator("*")
+        self.c.add_to_expression("8")
+        self.c.evaluate()
+
+        self.assertEqual(self.c.current_expression, "152.63636363636363", msg=None)
+
+        self.c.clear()
+
+    def test_multiple_operationswithbignumber(self):
+        self.c.add_to_expression("1")
+        self.c.add_to_expression("1")
+        self.c.add_to_expression("2")
+        self.c.add_to_expression("9")
+        self.c.append_operator("+")
+        self.c.add_to_expression("2")
+        self.c.add_to_expression("0")
+        self.c.add_to_expression("2")
+        self.c.add_to_expression("8")
+        self.c.append_operator("-")
+        self.c.add_to_expression("6")
+        self.c.add_to_expression("6")
+        self.c.add_to_expression("1")
+        self.c.add_to_expression("2")
+        self.c.append_operator("/")
+        self.c.add_to_expression("2")
+        self.c.append_operator("*")
+        self.c.add_to_expression("5")
+        self.c.add_to_expression("5")
+
+        self.c.evaluate()
+
+        self.assertEqual(self.c.current_expression, "-178673", msg=None)
 
         self.c.clear()
 
@@ -216,6 +259,64 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.c.current_expression, "-20", msg=None)
 
         self.c.clear()
+
+    def test_parenthesis(self):
+        self.c.add_to_expression("(")
+        self.c.add_to_expression("1")
+        self.c.add_to_expression("0")
+        self.c.add_to_expression("0")
+        self.c.add_to_expression(")")
+        self.c.evaluate()
+
+        self.assertEqual(self.c.current_expression, "100", msg=None)
+
+        self.c.clear()
+    
+    def test_percentage(self):
+        self.c.add_to_expression("1")
+        self.c.add_to_expression("2")
+        self.c.add_to_expression("5")
+        self.c.percentage()
+
+        self.assertEqual(self.c.current_expression, "1.25", msg=None)
+
+        self.c.clear()
+
+    def test_multiplicationwithpercentage(self):
+        self.c.add_to_expression("1")
+        self.c.add_to_expression("0")
+        self.c.add_to_expression("0")
+        self.c.append_operator("*")
+        self.c.add_to_expression("1")
+        self.c.add_to_expression("0")
+        self.c.add_to_expression("0")
+        self.c.evaluate()
+        self.c.percentage()
+
+        self.assertEqual(self.c.current_expression, "100.0", msg=None)
+
+        self.c.clear()
+
+    def test_multiplicationwithpercentage2(self):
+        self.c.add_to_expression("5")
+        self.c.add_to_expression("0")
+        self.c.append_operator("+")
+        self.c.add_to_expression("5")
+        self.c.add_to_expression("0")
+        self.c.append_operator("-")
+        self.c.add_to_expression("1")
+        self.c.add_to_expression("0")
+        self.c.append_operator("*")
+        self.c.add_to_expression("5")
+        self.c.append_operator("/")
+        self.c.add_to_expression("2")
+        self.c.evaluate()
+        self.c.percentage()
+
+        self.assertEqual(self.c.current_expression, "0.75", msg=None)
+
+        self.c.clear()
+
 
 
 if __name__ == '__main__':
