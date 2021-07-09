@@ -60,6 +60,9 @@ class Calculator:
         self.create_square_button()
         self.create_sqrt_button()
         self.create_backspace_button()
+        self.create_Rparenthesis_button()
+        self.create_Lparenthesis_button()
+        self.create_percentage_button()
         
     def create_display_labels(self):
         total_label = tk.Label(self.display_frame, text=self.total_expression, anchor=tk.E, bg=LIGHT_GRAY, fg=LABEL_COLOR, padx=24,font = SMALL_FONT_STYLE)
@@ -103,6 +106,18 @@ class Calculator:
     def create_sqrt_button(self):
         button = tk.Button(self.buttons_frame, text="\u221ax", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.sqrt)
         button.grid(row =0, column = 3, sticky=tk.NSEW)
+        
+    def create_Lparenthesis_button(self):
+        button = tk.Button(self.buttons_frame, text="(", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command =lambda x='(': self.add_to_expression(x))
+        button.grid(row =1, column = 2, sticky=tk.NSEW)
+
+    def create_Rparenthesis_button(self):
+        button = tk.Button(self.buttons_frame, text=")", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command =lambda x=')': self.add_to_expression(x))
+        button.grid(row =1, column = 3, sticky=tk.NSEW)
+
+    def create_percentage_button(self):
+        button = tk.Button(self.buttons_frame, text="%", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.percentage)
+        button.grid(row =1, column = 1, sticky=tk.NSEW)
 
     def create_equals_button(self):
         button = tk.Button(self.buttons_frame, text="=", bg=LIGHT_BLUE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.evaluate)
