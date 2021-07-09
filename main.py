@@ -62,6 +62,9 @@ class Calculator:
         self.create_square_button()
         self.create_sqrt_button()
         self.create_backspace_button()
+        self.create_Rparenthesis_button()
+        self.create_Lparenthesis_button()
+        self.create_percentage_button()
         
     def create_display_labels(self):
         total_label = tk.Label(self.display_frame, text=self.total_expression, anchor=tk.E, bg=LIGHT_GRAY, fg=LABEL_COLOR, padx=24,font = SMALL_FONT_STYLE)
@@ -105,6 +108,18 @@ class Calculator:
     def create_sqrt_button(self):
         button = tk.Button(self.buttons_frame, text="\u221ax", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.sqrt)
         button.grid(row =0, column = 3, sticky=tk.NSEW)
+        
+    def create_Lparenthesis_button(self):
+        button = tk.Button(self.buttons_frame, text="(", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command =lambda x='(': self.add_to_expression(x))
+        button.grid(row =1, column = 2, sticky=tk.NSEW)
+
+    def create_Rparenthesis_button(self):
+        button = tk.Button(self.buttons_frame, text=")", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command =lambda x=')': self.add_to_expression(x))
+        button.grid(row =1, column = 3, sticky=tk.NSEW)
+
+    def create_percentage_button(self):
+        button = tk.Button(self.buttons_frame, text="%", bg=OFF_WHITE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.percentage)
+        button.grid(row =1, column = 1, sticky=tk.NSEW)
 
     def create_equals_button(self):
         button = tk.Button(self.buttons_frame, text="=", bg=LIGHT_BLUE, fg=LABEL_COLOR, font= DEFAULT_FONT_STYLE, borderwidth = 0, command = self.evaluate)
@@ -115,100 +130,9 @@ class Calculator:
         frame.pack(expand=True, fill="both")
         return frame
       
-    def clear(self):
-        self.current_expression = ""
-        self.total_expression = ""
-        self.update_label()
-        self.update_total_label()
-
-    def evaluate(self):
-        self.total_expression += self.current_expression
-        self.update_total_label()
-        try:
-            self.current_expression = str(eval(self.total_expression))
-            expression = self.current_expression
-            self.current_expression = expression.rstrip('0').rstrip('.') if '.' in expression else expression
-
-            self.total_expression = ""
-
-        except Exception:
-            self.current_expression = "Math Error"  
-             
-            self.total_expression = ""
-
-        finally:
-            self.update_label()
     
-    def add_to_expression(self, value):
-        self.current_expression += str(value)
-        self.update_label()
     
-    def append_operator(self, operator):
-        self.current_expression += operator
-        self.total_expression += self.current_expression
-        self.current_expression = " "
-        self.update_total_label()
-        self.update_label()
-
-    def percentage(self):
-        try:
-            self.current_expression = str(eval(f"{self.current_expression}/100"))
-            self.update_label()
-        except Exception:
-            pass
-
-    def backspace(self):
-
-        if len(self.total_expression) == 0 and len(self.current_expression) > 0:
-            self.total_expression == ""
-            self.current_expression = ""
-            self.update_total_label()
-
-        else:
-            self.current_expression = self.current_expression[:-1]
-            self.update_label()
-            
-        if self.current_expression == "" and len(self.total_expression) > 1:
-            self.total_expression = self.total_expression[:-1]
-            t = self.total_expression
-            output = t[len(t.rstrip('().0123456789')):]
-            operator = ["/", "*", "-", "+"]
-            try:
-                if t[-1].isdigit() or t[-1] == ")" or t[-1] in operator:
-                    self.total_expression = self.total_expression.rstrip('().0123456789')
-                    self.current_expression = output
-
-            except IndexError:
-                pass
-            self.update_total_label()
-            self.update_label()
     
-    def square(self):
-        try:
-            self.current_expression = str(eval(f"{self.current_expression}**2"))
-            self.update_label()
-        except Exception:
-            pass
-
-    def sqrt(self):
-        try:
-            self.current_expression = str(eval(f"{self.current_expression}**0.5"))
-            self.update_label() 
-        except Exception:
-            pass
-          
-     def update_total_label(self):
-        expression = self.total_expression
-        for operator, symbol in self.operations.items():
-            expression = expression.replace(operator,f' {symbol} ') 
-        self.total_label.config(test=expression)
-        
-    def update_label(self):
-        self.label.config(text=self.current_expression[: 11])
-
-    
-  
-  
   
     def run(self):
         self.window.mainloop()
@@ -216,7 +140,3 @@ class Calculator:
 
 if __name__ == '__main__':
     Calculator().run()
-    
-        
-# run python main.py
-
