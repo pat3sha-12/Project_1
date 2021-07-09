@@ -63,7 +63,7 @@
             self.total_expression = ""
 
         except Exception:
-            self.current_expression = "Math Error"  
+            self.current_expression = " Math Error"  
              
             self.total_expression = ""
 
