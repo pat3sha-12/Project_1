@@ -222,6 +222,8 @@ class Calculator:
         self.label.config(text=self.current_expression[: 11])
         
         
+        
+        
      def run(self):
         self.window.mainloop()
         
