@@ -194,7 +194,7 @@ class Calculator:
             self.total_expression = ""
 
         except Exception:
-            self.current_expression = "Math Error"  
+            self.current_expression = " Math Error"  
              
             self.total_expression = ""
 
@@ -232,5 +232,3 @@ if __name__ == '__main__':
     Calculator().run()
     
 # run python main.py
-        
-
